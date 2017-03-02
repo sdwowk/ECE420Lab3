@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
   int i;
   double *result = CreateVec(n);
   for(i = 0; i < n; i++){
-  	result[i] = U[i][n]; 
+  	result[i] = U[i][n]/U[i][i]; 
   }
 
   GET_TIME(time_end);
@@ -52,24 +52,25 @@ void gaussian_elimination(){
 	double* tempRow;
 
 
-	for(k=0 ; k < n; k++){
-		tempMax = U[k][k];
+	for(k=0 ; k < n-1; k++){
+		tempMax = U[k][k] * U[k][k];
 		for(l = k; l < n; l++){
 
-			if(U[k][l] > tempMax){
-				tempMax = U[k][l];
+			if((U[k][l] * U[k][l]) > tempMax){
+				tempMax = U[k][l] * U[k][l];
 				switchIndex = l;
 			}
 		}
 
-		tempRow = U[k];
-		U[k] = U[switchIndex];
-		U[switchIndex] = tempRow;
-		
+		if(k != switchIndex){		
+			tempRow = U[k];
+			U[k] = U[switchIndex];
+			U[switchIndex] = tempRow;
+		}
 
 		for(i = k+1; i < n; i++){
 			alpha = U[i][k]/U[k][k];
-			for( j = k; j < n; j++){
+			for( j = k; j < n+1; j++){
 				U[i][j] = U[i][j] - alpha*U[k][j];
 			}
 		}
@@ -79,12 +80,16 @@ void gaussian_elimination(){
 
 void jordan_elimination() {
 	int k, i;
-	for (k = n-1; k > 1; k--){
+	double temp;
+	for (k = n-1; k > 0; k--){
 
-		for(i = 0; i < k-1; i++){
-			U[i][n] = U[i][n] - U[i][k]/(U[k][k] * U[k][n]);
-			U[i][k] = 0;
+		for(i = k-1; i >= 0; i--){
+			temp = U[i][k]/U[k][k];
+			U[i][k] = U[i][k] - temp * U[k][k];  
+			U[i][n] = U[i][n] - temp * U[k][n];
+
 		}
 	}
+
 
 }
