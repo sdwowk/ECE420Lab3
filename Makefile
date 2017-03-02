@@ -1,7 +1,7 @@
 CFLAGS = -lm -pthread -lpthread -gstabs+
 
 lab3: lab3.c 
-	gcc -ggdb -Wall -o lab3 lab3.c $(CFLAGS)
+	gcc -ggdb -Wall -o lab3 lab3.c Lab3IO.c $(CFLAGS)
 
 datagen: datagen.c
 	gcc datagen.c Lab3IO.c -o datagen

@@ -141,7 +141,7 @@ double* CreateVec(int size){
 
 int PrintVec(double* b, int size){
     int i;
-    for (i = 0; i< size; ++i){
+    for (i = 0; i< size; i++){
         printf("%f\n", b[i]);
     }
     return 0;
