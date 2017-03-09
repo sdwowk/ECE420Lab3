@@ -1,7 +1,10 @@
-CFLAGS = -lm -pthread -lpthread -gstabs+
+CFLAGS = -lm -pthread -fopenmp -lpthread -gstabs+
 
-lab3: lab3.c 
-	gcc -ggdb -Wall -o lab3 lab3.c Lab3IO.c $(CFLAGS)
+lab3_openMP: lab3_openMP.c 
+	gcc -ggdb -Wall -o lab3_openMP lab3_openMP.c Lab3IO.c $(CFLAGS)
+
+lab3_serial: lab3_serial.c 
+	gcc -ggdb -Wall -o lab3_serial lab3_serial.c Lab3IO.c $(CFLAGS)
 
 datagen: datagen.c
 	gcc datagen.c Lab3IO.c -o datagen
