@@ -1,0 +1,4 @@
+Gaussian-Jordan Elimination Times:
+Serial:
+0.004117 s
+0.004987 s
