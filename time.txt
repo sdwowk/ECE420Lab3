@@ -1,15 +1,16 @@
 Gaussian-Jordan Elimination Times (array size of 1000):
 Serial:
-0.004117
-0.004295 
-0.004718 
-0.001359 
-0.001313
-0.003005
-0.002308
-0.003688
+1.190727
+1.179567
+1.189174
+1.187758
+1.182082
+1.178271
+1.191750
+1.181884
+1.186247
 
-AVG: 0.0031
+AVG: 1.1852733
 
 OpenMP rendition 1 (8 core system):
 8 threads:
@@ -22,5 +23,5 @@ OpenMP rendition 1 (8 core system):
 0.380305
 0.389397
 0.373051
+AVG: 0.389541778
 
-AVG: 0.
